@@ -1,0 +1,43 @@
+{
+  "decision": "SHIP",
+  "quality": {
+    "rows": 50000,
+    "unique_users": 50000,
+    "duplicate_users": 0,
+    "missing_cells": 0,
+    "invalid_revenue_rows": 0
+  },
+  "srm": {
+    "chi_square": 0.0,
+    "p_value": 1.0
+  },
+  "conversion": {
+    "control_rate": 0.142,
+    "treatment_rate": 0.15944,
+    "absolute_lift": 0.01744000000000001,
+    "relative_lift": 0.12281690140845081,
+    "z_statistic": 5.4499258815120175,
+    "p_value": 5.039081619799398e-08,
+    "ci_low": 0.011169893110388084,
+    "ci_high": 0.023710106889611938
+  },
+  "revenue": {
+    "control_mean": 10.706898399999998,
+    "treatment_mean": 11.8725576,
+    "difference": 1.1656592000000021,
+    "ci_low": 0.615775330000002,
+    "ci_high": 1.7433525099999978,
+    "p_value": 0.0003999200159968006
+  },
+  "refund": {
+    "refund_control_rate": 0.05971830985915493,
+    "refund_treatment_rate": 0.06096337180130457,
+    "refund_absolute_lift": 0.0012450619421496348,
+    "refund_relative_lift": 0.02084891459731697,
+    "refund_z_statistic": 0.22651200865397533,
+    "refund_p_value": 0.8208032203746325,
+    "refund_ci_low": -0.00952216229383929,
+    "refund_ci_high": 0.01201228617813856
+  },
+  "simpsons_reversal": false
+}
