@@ -1,9 +1,11 @@
 # One-Click Checkout A/B Test
 
 An end-to-end product experiment analysis for an e-commerce checkout change, framed as an Advanced Business Analyst portfolio case. The project moves from experiment design and synthetic event generation through statistical inference, segmentation, guardrails, and an executive shipping decision.
-Live Project:https://aakanshak.github.io/AB-Test-Analysis/
-Github Repository:https://github.com/Aakanshak/AB-Test-Analysis
+## Live application
 
+**Streamlit dashboard:**https://aakanshak.github.io/AB-Test-Analysis/
+
+**GitHub repository:** https://github.com/Aakanshak/AB-Test-Analysis
 ## Review This First
 
 1. [`docs/executive_summary.md`](docs/executive_summary.md) for the decision and business implications.
