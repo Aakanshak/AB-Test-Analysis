@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="One-click checkout A/B test analysis and shipping recommendation.">
+  <title>One-Click Checkout Experiment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Experiment overview">Experiment 01</a>
+    <nav aria-label="Report sections">
+      <a href="#evidence">Evidence</a>
+      <a href="#segments">Segments</a>
+      <a href="#method">Method</a>
+      <a class="repo-link" href="https://github.com/Aakanshak/AB-Test-Analysis">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="decision-band" aria-labelledby="page-title">
+      <div class="decision-copy">
+        <p class="eyebrow">E-commerce · Checkout optimization · 28-day test</p>
+        <h1 id="page-title">One-Click Checkout</h1>
+        <p class="lead">A randomized experiment evaluating whether a faster checkout increases conversion and revenue without increasing customer refunds.</p>
+        <div class="decision-line">
+          <span class="status-dot" aria-hidden="true"></span>
+          <div><span class="label">Recommendation</span><strong>Ship with staged rollout</strong></div>
+        </div>
+      </div>
+      <div class="decision-proof" aria-label="Primary result">
+        <span class="label">Conversion lift</span>
+        <strong>+1.74<span>pp</span></strong>
+        <p>95% CI +1.12 to +2.37 pp</p>
+        <p class="significance">p &lt; 0.001 · statistically significant</p>
+      </div>
+    </section>
+
+    <section class="metric-strip" aria-label="Experiment summary metrics">
+      <article><span class="label">Users randomized</span><strong>50,000</strong><small>25,000 per arm</small></article>
+      <article><span class="label">Treatment conversion</span><strong>15.94%</strong><small>Control: 14.20%</small></article>
+      <article><span class="label">Revenue per user</span><strong>+$1.17</strong><small>95% CI +$0.62 to +$1.74</small></article>
+      <article><span class="label">Refund guardrail</span><strong>+0.12pp</strong><small>p = 0.821 · no signal</small></article>
+    </section>
+
+    <section class="content-section" id="evidence">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 · Primary evidence</p><h2>The treatment cleared the decision bar</h2></div>
+        <p>Randomization was balanced, the primary effect was positive and precise, and revenue moved in the same direction.</p>
+      </div>
+      <div class="evidence-grid">
+        <figure class="chart-panel">
+          <img src="outputs/conversion_by_group.png" alt="Bar chart showing higher conversion in treatment than control, with 95 percent confidence intervals.">
+          <figcaption>Conversion rate by randomized group. Error bars show 95% Wilson intervals.</figcaption>
+        </figure>
+        <div class="checklist" aria-label="Decision checks">
+          <div><span class="check">✓</span><p><strong>Assignment integrity</strong><br>SRM test p = 1.000 against the planned 50/50 split.</p></div>
+          <div><span class="check">✓</span><p><strong>Primary metric</strong><br>+12.3% relative lift; two-proportion z-test p &lt; 0.001.</p></div>
+          <div><span class="check">✓</span><p><strong>Business value</strong><br>Revenue per user increased from $10.71 to $11.87.</p></div>
+          <div><span class="check">✓</span><p><strong>Customer protection</strong><br>Refund movement was small and statistically insignificant.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section alt" id="segments">
+      <div class="section-heading">
+        <div><p class="eyebrow">02 · Heterogeneity</p><h2>No Simpson's paradox reversal</h2></div>
+        <p>Device and country were pre-specified diagnostic cuts. Their estimates support consistency, but are not independent shipping claims.</p>
+      </div>
+      <figure class="wide-chart">
+        <img src="outputs/segment_lift.png" alt="Confidence interval plot of treatment conversion lift across device and country segments.">
+        <figcaption>Point estimates and 95% confidence intervals. Smaller segments remain underpowered.</figcaption>
+      </figure>
+    </section>
+
+    <section class="content-section" id="method">
+      <div class="section-heading">
+        <div><p class="eyebrow">03 · Analytical design</p><h2>Decision-led, reproducible analysis</h2></div>
+        <p>The user is the unit of randomization and analysis. All results follow intent-to-treat.</p>
+      </div>
+      <div class="method-grid">
+        <article><span>01</span><h3>Validate</h3><p>Uniqueness, missingness, assignment balance, covariate balance, and sample ratio mismatch.</p></article>
+        <article><span>02</span><h3>Estimate</h3><p>Two-proportion z-test for conversion and non-parametric bootstrap for zero-inflated revenue.</p></article>
+        <article><span>03</span><h3>Stress test</h3><p>Pre-specified segment consistency and refund rate among customers at risk of refund.</p></article>
+        <article><span>04</span><h3>Decide</h3><p>Positive significant conversion lift, valid assignment, and no adverse guardrail movement.</p></article>
+      </div>
+      <div class="artifact-links">
+        <a href="notebooks/ab_test_analysis.ipynb">Analysis notebook <span aria-hidden="true">↓</span></a>
+        <a href="docs/experiment_design.md">Experiment design <span aria-hidden="true">→</span></a>
+        <a href="sql/core_metrics.sql">Warehouse SQL <span aria-hidden="true">→</span></a>
+        <a href="docs/executive_summary.md">Executive summary <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="rollout-band">
+      <div><p class="eyebrow">Recommended action</p><h2>Release in stages, then monitor two purchase cycles.</h2></div>
+      <p>Track conversion, refunds, checkout latency, payment errors, and support contacts with an automatic rollback threshold before reaching 100% exposure.</p>
+    </section>
+  </main>
+
+  <footer><span>Portfolio experiment · Synthetic data</span><span>Analysis reproducible from source</span></footer>
+</body>
+</html>
